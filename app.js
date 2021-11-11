@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 var Animal = require("./models/Animal");
 
 const connectionString = process.env.MONGO_CON

@@ -50,3 +50,16 @@ exports.Animal_list = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+// VIEWS
+// Handle a show all view 
+exports.Animal_view_all_Page = async function(req, res) {
+    try{
+        theAnimal = await Animal.find();
+        res.render('Animal', { title: 'Animal Search Results', results: theAnimal });
+        }
+        catch(err){
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+        }
+        };
