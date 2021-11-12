@@ -63,3 +63,17 @@ exports.Animal_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`);
         }
         };
+
+
+
+// for a specific Animal.
+exports.Animal_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await Animal.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
