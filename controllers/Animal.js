@@ -1,15 +1,15 @@
 var Animal = require('../models/Animal');
-// List of all Costumes
+// List of all Animals
 exports.Animal_list = function(req, res) {
 res.send('NOT IMPLEMENTED: Animal list');
 };
 
-// for a specific Costume.
+// for a specific Animal.
 exports.Animal_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Animal detail: ' + req.params.id);
 };
 
-// Handle Gas create on POST.
+// Handle Animal create on POST.
 exports.Animal_create_post = async function (req, res) {
     console.log(req.body)
     let document = new Animal();
@@ -30,15 +30,31 @@ exports.Animal_create_post = async function (req, res) {
 };
 
 
-// Handle Costume delete form on DELETE.
+// Handle Animal delete form on DELETE.
 exports.Animal_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Animal delete DELETE ' + req.params.id);
 };
-
-// Handle Costume update form on PUT.
-exports.Animal_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Animal update PUT' + req.params.id);
+ 
+// Handle Animal update form on PUT.
+exports.Animal_update_put =  async function(req, res) {
+console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+try {
+let toUpdate = await Animal.findById( req.params.id)
+// Do updates of properties
+if(req.body.Name)toUpdate.Name = req.body.Name;
+if(req.body.Breed)toUpdate.Breed = req.body.Breed;
+if(req.body.Age)toUpdate.Age = req.body.Age;
+let result = await toUpdate.save(); 
+console.log("Sucess " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+}
 };
+
 
 // List of all Animal
 exports.Animal_list = async function (req, res) {
@@ -77,3 +93,4 @@ exports.Animal_detail = async function(req, res) {
     res.send(`{"error": document for id ${req.params.id} not found`);
     }
     };
+
