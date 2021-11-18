@@ -10,3 +10,17 @@ module.exports = router;
 router.get('/Animal/:id', Animal_controlers.Animal_detail);
 module.exports = router;
 
+/* GET detail Animal page */
+router.get('/detail', Animal_controlers.Animal_view_one_Page);
+
+
+/* GET create Animal page */
+router.get('/create', Animal_controlers.Animal_create_Page);
+
+
+/* GET create update page */
+router.get('/update', Animal_controlers.Animal_update_Page);
+
+/* GET create Animal page */
+router.get('/delete', Animal_controlers.Animal_delete_Page);
+module.exports = router;

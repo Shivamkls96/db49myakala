@@ -1,0 +1,22 @@
+extends layout
+
+block content
+ h1= title
+
+ - let Animalid = toShow._id
+ - let Name = toShow.Name
+ - let Breed = toShow.Breed
+ - let Age = toShow.Age
+ div
+   div.row
+     div(class='AnimalAttr mr-3') Animal ID is:
+     div #{Animalid}
+   div.row
+     div(class='AnimalAttr mr-3') Animal Name is:
+     div #{Name}
+   div.row
+     div(class='AnimalAttr mr-3') Animal Breed is:
+     div #{Breed}
+   div.row
+     div(class='AnimalAttr mr-3') Animal Age is:
+     div #{Age}
