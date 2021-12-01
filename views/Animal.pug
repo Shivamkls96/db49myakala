@@ -12,12 +12,15 @@ block content
   
   div(class='container-fluid')
     div(class='row m-1')
+    a(class="btn btn-primary" href="/Animal/create") Create
     div(class= "row row-cols-1 row-cols-sm-4 g-6")
       each item, index in items 
         - let destination = `dispatch(\"/Animal/update?id=${item._id}\")`
         div(class="card text-white bg-warning mb-3" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') Item #{item.Name}(#{item.Breed}) is #{item.Age}
           <br><br>
-          button.btn( class="btn-success ml-1", onclick= destination) Update
+          a(class="btn btn-secondary ml-1",href= "/Animal/detail?id="+item._id) Detail
+          a(class="btn btn-info ml-1",href= "/Animal/update?id="+item._id) Update 
+          a(class="btn btn-success ml-1",href= "/Animal/delete?id="+item._id) Delete
 
   script.
     function dispatch(path){
